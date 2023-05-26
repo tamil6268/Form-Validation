@@ -1,0 +1,54 @@
+#head{
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(67, 100, 89);
+}
+form{
+  background-color: rgb(147, 223, 197);
+  border: 3px solid gray;
+  display: flex;
+  flex-direction: column;
+  justify-content:left;
+  row-gap: 5px;
+  align-items: center;
+  text-align: center;
+}
+.head,button{
+  display: flex;
+  padding: 2px;
+}
+.head :nth-child(1){
+   background-color: lightgreen;
+   color: white;
+}
+.head :nth-child(2){
+  color:white; 
+  background-color: tomato;
+}
+.head :nth-child(1):hover{
+   background-color: green;
+   color: white;
+}
+.head :nth-child(2):hover{
+  color:white; 
+  background-color: red;
+}
+label{
+  padding: 2px;
+}
+p{
+  font-size: small;
+}
+input{
+  text-align: center;
+}
+#move{
+  padding-left: 40%;
+}
+button{
+  margin: 4px;
+}
