@@ -40,6 +40,10 @@ form{
 label{
   padding: 2px;
 }
+.btn{
+  position: relative;
+  left: 40%;
+}
 p{
   font-size: small;
 }
