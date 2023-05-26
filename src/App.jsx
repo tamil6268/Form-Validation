@@ -1,12 +1,16 @@
 import "./App.css";
+import FileUploader from 'devextreme-react/file-uploader';
 import { useState, useRef } from "react";
+
 function App() {
   const [userData, setUserData] = useState({});
   const [message, setMessage] = useState({});
   const [success, setSuccess] = useState(false);
   const rangeRef = useRef(20000);
   const dateRef = useRef(null);
-  const [ageState,setAgeState]=useState(0)
+  const [ageState, setAgeState] = useState(0);
+
+  const fileExtensions = ['.doc', '.docx'];
 
   const validator = {
     name: /[a-zA-Z]{5,12}$/i,
@@ -38,26 +42,27 @@ function App() {
     }
     //dob and age
     // console.log(new Date().getFullYear())
-    let age=18;
-    const bduser=dateRef.current.value
-    let user=+bduser.slice(0,4);
+    let age = 18;
+    const bduser = dateRef.current.value;
+    let user = +bduser.slice(0, 4);
     var mydate = new Date();
-    const bdworld=mydate.getFullYear()
-    let validateAge=bdworld-user;
-    console.log(user)
-    console.log(bdworld)
-    console.log(validateAge)
+    const bdworld = mydate.getFullYear();
+    let validateAge = bdworld - user;
+    console.log(user);
+    console.log(bdworld);
+    console.log(validateAge);
     if (!user) {
       error.age = "*Required";
     }
-    if(validateAge>age){
-      setAgeState(validateAge.length>2?'':validateAge)
-       error.age=""
-    }else{
-      setAgeState('')
-      error.age="Age Should be greater than 18"
+    if (validateAge > age) {
+      setAgeState(validateAge.length > 2 ? "" : validateAge);
+      error.age = "";
+    } else {
+      setAgeState(validateAge.length > 2 ? "" : validateAge);
+      error.age = "Age Should be greater than 18";
+      alert("Age Should be greater than 18");
     }
-   
+
     //salary
     if (userData.salary > 20000 && userData.salary < 100000) {
       error.salary = "";
@@ -117,7 +122,13 @@ function App() {
             </p>
           }
           <label>DateOfBirth</label>
-          <input type="date" name="dob" ref={dateRef} placeholder="" onChange={onChange} />
+          <input
+            type="date"
+            name="dob"
+            ref={dateRef}
+            placeholder=""
+            onChange={onChange}
+          />
           {
             <p className="one" style={{ color: "red" }}>
               {" "}
@@ -161,6 +172,11 @@ function App() {
             placeholder="Enter salary"
             onChange={onChange}
           />
+          <div style={{display:"flex",width:"100%",justifyContent:"space-evenly",fontSize:"10px"}}>
+            <span>20000</span>
+            <span>100000</span>
+          </div>
+
           {
             <p className="one" style={{ color: "red" }}>
               {" "}
@@ -168,7 +184,12 @@ function App() {
             </p>
           }
           <label>Address</label>
-          <textarea name="address"height={160} width={130} onChange={onChange}></textarea>
+          <textarea
+            name="address"
+            height={160}
+            width={130}
+            onChange={onChange}
+          ></textarea>
           {
             <p className="one" style={{ color: "red" }}>
               {" "}
@@ -198,8 +219,7 @@ function App() {
               </p>
             }
           </label>
-          <label>Upload</label>
-          <input id="move" type="file" name="file" onChange={onChange} />
+          <label><FileUploader allowedFileExtensions={fileExtensions} onChange={onChange} /></label>
           {
             <p className="one" style={{ color: "red" }}>
               {" "}
