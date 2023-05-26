@@ -19,9 +19,6 @@ function App() {
     if(!NAME){
       error.name="validation failed (5-12)length"
     }
-    else if(NAME){
-      error.name=""
-    }
     else{
       error.name="*Required"
     }
@@ -34,7 +31,7 @@ function App() {
       error.mobile="*Required (10 digits)"
     }
     else{
-      error.mobile="validation failed"
+      error.mobile="*Required (10 digits)"
     }
     //dob and age
     // console.log(new Date().getFullYear())
@@ -56,10 +53,19 @@ function App() {
     else{
       error.age=""
     }
+    //address:
+    if(!userData.address){
+      error.address="*Required contains 250-characters"
+    }
     //file:
     if(!userData.file){
       error.file="*Required"
     }
+    //gender:
+    if(!userData.gender){
+      error.gender="*Required"
+    }
+
     if (Object.keys(error).length > 0) {
       setMessage(error);
       return;
@@ -80,6 +86,7 @@ function App() {
         <label>DateOfBirth 
         </label>
           <input type="date" name="dob" placeholder='' onChange={onChange}/>
+          {<p className='one' style={{color:"red"}}> { message.age}</p>}
         <label>Age
         </label>
           <input type="number" name="age" placeholder='Should be greater than 18' onChange={onChange}/>
@@ -97,8 +104,9 @@ function App() {
           <input type="textarea" name="address" onChange={onChange}/>
           {<p className='one' style={{color:"red"}}> { message.address}</p>}
         <label>Gender
-          <input type="radio" name="gender" onChange={onChange} value="male"/>male
+          <input type="radio" name="gender" onChange={onChange} value="male" />male
           <input type="radio" name="gender" onChange={onChange} value="female"/>female
+          {<p className='one' style={{color:"red"}}> { message.gender}</p>}
         </label>
         <label>Upload
         </label>
