@@ -57,7 +57,10 @@ function App() {
     if (validateAge > age) {
       setAgeState(validateAge.length > 2 ? "" : validateAge);
       error.age = "";
-    } else {
+    }else if(validateAge < age){
+      setAgeState(0)
+    } 
+    else {
       setAgeState(validateAge.length > 2 ? "" : validateAge);
       error.age = "Age Should be greater than 18";
       alert("Age Should be greater than 18");
@@ -76,6 +79,9 @@ function App() {
     //file:
     if (!userData.file) {
       error.file = "*Required";
+
+    }else{
+alert("Invalid File");
     }
     //gender:
     if (!userData.gender) {
@@ -97,7 +103,8 @@ function App() {
     setSuccess(false);
   };
   return (
-    <div id="head">
+    <div id="body">
+      <div id="head">
       {success ? (
         <div>
           <h1>Thanks For Your Submission...</h1>
@@ -106,8 +113,9 @@ function App() {
           </button>
         </div>
       ) : (
+        <div id="form">
+          <div id="title">Application Form</div>
         <form onSubmit={onSubmit}>
-          <h2>Application Form</h2>
           <label>Name</label>
           <input
             type="text"
@@ -163,6 +171,7 @@ function App() {
           }
           <label> Salary</label>
           <input type="number" value={rangeRef.current.value} />
+          <br/>
           <input
             type="range"
             ref={rangeRef}
@@ -172,7 +181,7 @@ function App() {
             placeholder="Enter salary"
             onChange={onChange}
           />
-          <div style={{display:"flex",width:"100%",justifyContent:"space-evenly",fontSize:"10px"}}>
+          <div id="salary-range">
             <span>20000</span>
             <span>100000</span>
           </div>
@@ -244,11 +253,13 @@ function App() {
             }
           </label>
           <div className="head">
-            <button type="submit">Submit</button>
+            <button type="submit">Save</button>
             <button type="reset">Clear</button>
           </div>
         </form>
+        </div>
       )}
+    </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-#head{
+/* #head{
   height: 100%;
   width: 100vw;
   display: flex;
@@ -55,4 +55,57 @@ input{
 }
 button{
   margin: 4px;
+} */
+
+
+
+
+
+
+
+/* New Ui Part */
+#body{
+  width: 100vw;
+  height: 110vh;
+  background-image: url('https://cdn.pixabay.com/photo/2016/10/18/21/22/beach-1751455_1280.jpg');
+  background-size: cover;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+#form{
+   border: 2px solid rgb(58, 57, 57);
+   align-items: center;
+   background-color: rgba(83, 79, 79, 0.39);
+   border-radius: 15px;
+}
+#title{
+  background-color: rgba(56, 53, 53, 0.89);
+  text-align: center;
+  font-size: 28px;
+}
+form{
+  padding-left:40px;
+   padding-right:40px;
+   padding-bottom:15px;
+   padding-top:10px;
+}
+p{
+  font-size: small;
+}
+#salary-range{
+  width: 200px;
+  font-size: 10px;
+  font-weight: 800;
+  display: flex;
+  justify-content: space-evenly;
+  color: black;
+}
+.head{
+  display: flex;
+  justify-content: space-evenly;
 }
